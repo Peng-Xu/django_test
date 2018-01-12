@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<style>
+        html,body{text-align:center;margin:0px auto;}
+</style>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ error }}
+        <input type="submit" value="登录">
+        <a href="/register/">注册</a>
+
+    </form>
+
+</body>
+</html>
