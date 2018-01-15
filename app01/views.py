@@ -11,7 +11,7 @@ from app01.models import User
 
 #用户信息form类
 class UserForm(forms.Form):
-    name = forms.EmailField(label='邮  箱', max_length=25, error_messages={'required': '用户名不能为空', 'invalid': "用户名不能超过25位字符"})
+    name = forms.EmailField(label='邮  箱', max_length=45, error_messages={'required': '用户名不能为空', 'invalid': "用户名不能超过25位字符"})
     pwd = forms.CharField(label='密  码', widget=forms.PasswordInput, max_length=15, error_messages={'required': '密码不能为空', 'invalid': '密码不能超过15字符'})
 
 
