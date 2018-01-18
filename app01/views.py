@@ -5,6 +5,7 @@ from django import forms
 from django.http import request, response
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from app01.models import User
@@ -13,7 +14,6 @@ from app01.models import User
 class UserForm(forms.Form):
     name = forms.EmailField(label='邮  箱', max_length=45, error_messages={'required': '用户名不能为空', 'invalid': "用户名不能超过25位字符"})
     pwd = forms.CharField(label='密  码', widget=forms.PasswordInput, max_length=15, error_messages={'required': '密码不能为空', 'invalid': '密码不能超过15字符'})
-
 
 def regist(request):
     Method = request.method
@@ -55,11 +55,11 @@ def login(request):
         uf = UserForm()
         return render(request, 'login.html', {'uf': uf})
 
-
+@login_required(login_url='/login')
 def index(request):
     username = request.COOKIES.get('cookie_username', '')
     return render(request, 'index.html', {'username': username})
-
+@login_required(login_url='/login')
 def logout(request):
     response = HttpResponseRedirect('/index/')
     response.delete_cookie('cookie_username')
