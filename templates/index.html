@@ -11,6 +11,8 @@
 <body>
 <p>Welcome {{ username }}</p>
     {% if not username %}
+
+        <div>未登录</div>
         <div><a href='/login/'>登录</a></div>
         <div><a href='/regist/'>注册</a></div>
     {% else %}
